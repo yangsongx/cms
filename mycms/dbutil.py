@@ -21,10 +21,10 @@ class ImportData:
         ret = ''
 
         for i in data:
-            if i == "\"" or i == "'":
-                print("Wow, you need add quote")
-                ret = ret + "\\"
-                ret = ret + i
+            if i == "\"":
+                ret = ret + "“"
+            elif i == "'":
+                ret = ret + "‘"
             else:
                 ret = ret + i
 
