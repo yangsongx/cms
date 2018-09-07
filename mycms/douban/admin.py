@@ -9,7 +9,7 @@ class BookTypeAdmin(admin.ModelAdmin):
     list_display = ('id', 'type_name')
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title')
+    list_display = ('id', 'title', 'rate', 'url')
 
 
 admin.site.register(BookType, BookTypeAdmin)

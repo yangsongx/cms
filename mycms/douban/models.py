@@ -15,3 +15,4 @@ class Book(models.Model):
     url = models.CharField(max_length=1024)
     rate = models.FloatField(null=True)
     pub = models.CharField(max_length=512)
+    cover = models.CharField(max_length=1024, default='')
