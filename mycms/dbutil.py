@@ -57,6 +57,21 @@ class ImportData:
 
         return 0
 
+    def check_unique(self):
+        full_list = []
+
+        with open(self.__jsfn, 'r') as f:
+            full_data = f.read()
+            jsdata = json.loads(full_data)
+            print("json loaded[OK]")
+            print("there are totally %d items" %(len(jsdata)))
+
+            for it in jsdata:
+                if it['url'] not in full_list:
+                    full_list.append(it['url'])
+                else:
+                    print("%s duplicated" %(it['url']))
+
     def run_v0(self):
         with open(self.__jsfn, 'r') as f:
             full_data = f.read()
@@ -90,4 +105,5 @@ if __name__ == '__main__':
     print("try import the data from %s" %(jsfile))
 
     im = ImportData(jsfile)
-    im.run()
+#    im.run()
+    im.check_unique()
