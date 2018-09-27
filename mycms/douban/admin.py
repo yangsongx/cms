@@ -11,6 +11,7 @@ class BookTypeAdmin(admin.ModelAdmin):
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'rate', 'my_url')
+    search_fields = ('title',)
 
     # cusotmized field, let it be clickable
     def my_url(self, obj):

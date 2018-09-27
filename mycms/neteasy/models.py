@@ -15,7 +15,7 @@ class MusicList(models.Model):
     title = models.CharField(max_length=512)
     url = models.CharField(max_length=1024)
     cover = models.CharField(max_length=1024, default='')
-    played = models.CharField(max_length=32, default='')
+    played = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = '音乐列表'

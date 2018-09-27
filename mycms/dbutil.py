@@ -32,11 +32,7 @@ class ImportData:
 
     def load_in(self, jsobj):
 
-        typeid = 1 # programming by default
-        if jsobj['tag'] == 0:
-            typeid = 1
-        elif jsobj['tag'] == 1:
-            typeid = 2
+        typeid =  jsobj['tag'] + 1
 
         # check if it existed or not...
         cmd = "SELECT url FROM %s WHERE url='%s'" %(self.__book_table, jsobj['url'])
@@ -105,5 +101,5 @@ if __name__ == '__main__':
     print("try import the data from %s" %(jsfile))
 
     im = ImportData(jsfile)
-#    im.run()
-    im.check_unique()
+    im.run()
+#    im.check_unique()
