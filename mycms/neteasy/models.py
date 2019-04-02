@@ -11,7 +11,7 @@ class MusicType(models.Model):
         return self.type_name
 
 class MusicList(models.Model):
-    list_type = models.ForeignKey(MusicType)
+    list_type = models.ForeignKey(MusicType, on_delete = models.CASCADE, null=True)
     title = models.CharField(max_length=512)
     url = models.CharField(max_length=1024)
     cover = models.CharField(max_length=1024, default='')
