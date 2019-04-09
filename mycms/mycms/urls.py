@@ -15,10 +15,15 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+#from django.contrib.auth.views import login, logout
+from django.contrib.auth.views import LoginView
 
 import douban.views
+import gaorong.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'),name='login'),
+    url(r'^gg/', gaorong.views.gg_entry),
     url(r'^foo/', douban.views.foo),
 ]
