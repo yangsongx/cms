@@ -1,5 +1,6 @@
 from django.contrib import admin
-from financial.models import Fund, Investment
+from financial.models import Fund, Investment, Summary
+from financial.views import summary_entry
 
 # Register your models here.
 
@@ -8,6 +9,12 @@ class FundAdmin(admin.ModelAdmin):
 
 class InvestmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'fund', 'base_money', 'when', 'description')
+
+# try override the standard admin framework
+@admin.register(Summary)
+class SummaryAdmin(admin.ModelAdmin):
+    def changelist_view(self, request, extra_content=None):
+        return summary_entry(request)
 
 admin.site.register(Fund, FundAdmin)
 admin.site.register(Investment, InvestmentAdmin)

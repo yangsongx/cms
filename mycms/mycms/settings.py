@@ -25,7 +25,7 @@ SECRET_KEY = '&@r)!zfpaxvfh5o$hk8kki8zqk2+%h7k3z3emz7u%vihpt#3cf'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['open.cn.hansong.io']
 
 
 # Application definition

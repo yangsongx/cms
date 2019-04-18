@@ -48,3 +48,9 @@ class MoneyDetails(models.Model):
     price =  models.FloatField(default=0.0)
     count = models.FloatField(default=0.0)
 
+# FIXME - this aims to be used to override standard admin framewrok..
+class Summary(models.Model):
+    class Meta:
+        verbose_name = '财富一览'
+        verbose_name_plural = '财富一览'
+    pass

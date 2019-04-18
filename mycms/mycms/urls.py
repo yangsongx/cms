@@ -22,7 +22,10 @@ import douban.views
 import gaorong.views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # I failed dispatch via URL in NGINX, so had to pre-pend the leading test/ URL
+    #url(r'^test/admin/', admin.site.urls),
+    url(r'^test/', admin.site.urls), # let mainentry also be the admin page!
+    #url(r'admin/', admin.site.urls),
     url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'), name='login'),
     url(r'^gg/', gaorong.views.gg_entry),
     url(r'^gg/uploadfile', gaorong.views.uploadfile_entry),
