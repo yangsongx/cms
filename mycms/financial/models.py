@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Fund(models.Model):
     name = models.CharField(max_length=32, default='')
-    fund_id = models.CharField(max_length=16, default='')
+    fund_id = models.CharField(unique=True, max_length=16, default='')
     description = models.CharField(max_length=128, default='')
     class Meta:
         verbose_name = '基金类型'
@@ -47,6 +47,10 @@ class MoneyDetails(models.Model):
     fund = models.ForeignKey(Fund, on_delete = models.CASCADE, blank=True, null=True)
     price =  models.FloatField(default=0.0)
     count = models.FloatField(default=0.0)
+    when = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    class Meta:
+        verbose_name = '基金份额'
+        verbose_name_plural = '基金份额'
 
 # FIXME - this aims to be used to override standard admin framewrok..
 class Summary(models.Model):

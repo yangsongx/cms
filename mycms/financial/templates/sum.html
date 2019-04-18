@@ -17,21 +17,35 @@
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: 'ECharts 入门示例'
+                text: 'ECharts示例'
             },
             tooltip: {},
             legend: {
-                data:['销量']
+                data:['销量', 'HH']
             },
             xAxis: {
-                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                data: ["总资产","个体"]
             },
             yAxis: {},
             series: [{
-                name: '销量',
-                type: 'bar',
-                data: [ {{mymoney}}, 20, 36, 10, 10, 20]
-            }]
+                  name: '销量',
+                  type: 'bar',
+                  data: [ {{ mydic.mymoney }}, 11]
+                },{
+                  name: 'HH',
+                  type: 'bar',
+                  barCateGoryGap: '10%',
+                  data: [ {{ mydic.mymoney }}, 12]
+                },{
+                  name: '销量',
+                  type: 'bar',
+                  data: [ {{ mydic.mymoney }}, 13]
+                },{
+                  name: 'HH',
+                  type: 'bar',
+                  barCateGoryGap: '10%',
+                  data: [ {{ mydic.mymoney }}, 14]
+                }]
         };
 
         // 使用刚指定的配置项和数据显示图表。
