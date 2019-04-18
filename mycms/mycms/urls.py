@@ -23,7 +23,8 @@ import gaorong.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'),name='login'),
+    url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'), name='login'),
     url(r'^gg/', gaorong.views.gg_entry),
+    url(r'^gg/uploadfile', gaorong.views.uploadfile_entry),
     url(r'^foo/', douban.views.foo),
 ]

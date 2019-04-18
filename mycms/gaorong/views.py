@@ -7,3 +7,6 @@ from django.template import RequestContext
 @login_required
 def gg_entry(request):
     return render_to_response('main.html', { })
+
+def uploadfile_entry(request):
+    return 0
