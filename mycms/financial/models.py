@@ -10,6 +10,9 @@ class Fund(models.Model):
         verbose_name = '基金类型'
         verbose_name_plural = '基金类型'
 
+    def __str__(self):
+        return self.name
+
 class Investment(models.Model):
     ENVIRONMENT = (
         (0, 'Gao'),
@@ -17,9 +20,10 @@ class Investment(models.Model):
     )
 
     fund = models.ForeignKey(Fund, on_delete = models.CASCADE, blank=True, null=True)
-    base_money =  models.FloatField(default=0.0)
+    base_money =  models.FloatField(u'本金', default=0.0)
     who = models.IntegerField(u'投资人', choices=ENVIRONMENT, default=1)
     when = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    description = models.CharField(max_length=128, default='')
     created = models.DateTimeField(auto_now_add=True)
     class Meta:
         verbose_name = '投资记录'
