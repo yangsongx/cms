@@ -5,16 +5,129 @@
 
 {% block content %}
 <script src="/static/js/echarts.min.js"></script>
+  <style> 
+    .div-overview-a{ float:left;width:49%;height:50%;border:1px solid #F00} 
+    .div-overview-b{ float:left;width:49%;border:1px solid #000} 
+    .div-overview-c{ float:left;width:40%;height:400px} 
+ </style> 
+
     <div>
         <label><h1>资金统计</h1> </label>
     </div>
 
-    <div id="main" style="width: 600px;height:400px;"></div>
+
+    <div id='idOverview1' class="div-overview-c"></div> 
+    <div id='f2' class="div-overview-c"></div> 
+
+    <script type="text/javascript">
+       // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('idOverview1'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '总览'
+            },
+            tooltip: {},
+            legend: {
+                data: ["本金","市值"]
+            },
+            xAxis: {
+                data:['数目']
+            },
+            yAxis: {},
+            series: [{
+                  type: 'bar',
+                  name: '本金',
+                  data: [ {{ overview.base_money }}]
+                },{
+                  name: '市值',
+                  type: 'bar',
+                  data: [ {{ overview.real_money }}]
+                }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+       /////////////////////////////////////
+       // second subplot stuff...
+       /////////////////////////////////////
+
+        var myChart2 = echarts.init(document.getElementById('f2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '分成'
+            },
+            tooltip: {},
+//            legend: {
+//                data:['高蓉', '杨松祥']
+ //           },
+            series: [{
+                  type: 'pie',
+                  name: '分成',
+                  data: [ {'value': {{ overview.base_money_gao }},
+                           'name':'高蓉'
+                        },
+                          {
+                            'value': {{ overview.base_money_yang}},
+                            'name': '杨松祥'
+                        }]
+                }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart2.setOption(option);
+    </script>
+
+    <div id="main" class="div-overview-c"></div>
     <script type="text/javascript">
        // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
 
         // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '总览'
+            },
+            tooltip: {},
+            legend: {
+                data:['本金', '市值', '高蓉', '杨松祥']
+            },
+            xAxis: {
+                data: ["总资产","个体"]
+            },
+            yAxis: {},
+            series: [{
+                  type: 'bar',
+                  name: '本金',
+                  data: [ {{ overview.base_money }}]  // 本金， 高蓉
+                },{
+                  name: '市值',
+                  type: 'bar',
+                  data: [ {{ overview.real_money }}]
+                },{
+                  name: '高蓉',
+                  type: 'bar',
+                  data: [ , 1300]
+                },{
+                  name: '杨松祥',
+                  type: 'bar',
+                  barCateGoryGap: '10%',
+                  data: [, 14000]
+                }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+    <div id="myfigure2" class="div-overview-c"></div>
+    <script type="text/javascript">
+       // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('myfigure2'));
         var option = {
             title: {
                 text: 'ECharts示例'
@@ -30,25 +143,24 @@
             series: [{
                   name: '销量',
                   type: 'bar',
-                  data: [ {{ mydic.mymoney }}, 11]
+                  data: [ {{ mydic.mymoney }},]
                 },{
                   name: 'HH',
                   type: 'bar',
-                  barCateGoryGap: '10%',
-                  data: [ {{ mydic.mymoney }}, 12]
+                  data: [ 13,]
                 },{
                   name: '销量',
-                  type: 'bar',
-                  data: [ {{ mydic.mymoney }}, 13]
+                  type: 'pie',
+                  data: [ ,29]
                 },{
                   name: 'HH',
-                  type: 'bar',
-                  barCateGoryGap: '10%',
-                  data: [ {{ mydic.mymoney }}, 14]
+                  type: 'pie',
+                  data: [ , 12]
                 }]
         };
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
+
 {% endblock %}
