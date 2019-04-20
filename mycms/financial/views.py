@@ -6,6 +6,14 @@ import sys
 
 # Create your views here.
 
+# FIXME extract recent-12 months data...
+def calculate_long_trend():
+    # calculate on the N/A type money, for every month.
+
+    # calculate on the non-N/A type money, for every month
+    return 0
+
+
 def calculate_how_much():
     result = 0.0
 

@@ -4,7 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Fund(models.Model):
     name = models.CharField(max_length=32, default='')
-    fund_id = models.CharField(unique=True, max_length=16, default='')
+    fund_id = models.CharField(max_length=16, default='')
     description = models.CharField(max_length=128, default='')
     class Meta:
         verbose_name = '基金类型'
