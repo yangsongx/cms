@@ -5,6 +5,7 @@
 
 {% block content %}
 <script src="/static/js/echarts.min.js"></script>
+
   <style> 
     .div-overview-a{ float:left;width:49%;height:50%;border:1px solid #F00} 
     .div-overview-b{ float:left;width:49%;border:1px solid #000} 
@@ -90,33 +91,34 @@
         // 指定图表的配置项和数据
         var option = {
             title: {
-                text: '总览'
+                text: '资金走势'
             },
             tooltip: {},
             legend: {
-                data:['本金', '市值', '高蓉', '杨松祥']
+                data:['本金', '市值']
             },
-            xAxis: {
-                data: ["总资产","个体"]
-            },
-            yAxis: {},
+            xAxis: [
+                       {
+                          type: 'category',
+      	        boundaryGap: false,
+	        axisLabel: {            show: true,            textStyle: {                color: '#8a94a3' // 坐标字体颜色  
+	           }, 
+	           rotate: 20 // 坐标倾斜角度 
+	       },   
+	     axisLine: {  
+	           lineStyle: {   
+	           color: '#bdc7da', // x坐标轴颜色     
+	       }    
+	     },        data: ['06-22', '06-22', '06-22', '06-22', '06-22' ]    }],
+
             series: [{
-                  type: 'bar',
+                  type: 'line',
                   name: '本金',
-                  data: [ {{ overview.base_money }}]  // 本金， 高蓉
+                  data: [ 1, 2, 3, 4, 5]  // 本金， 高蓉
                 },{
                   name: '市值',
-                  type: 'bar',
-                  data: [ {{ overview.real_money }}]
-                },{
-                  name: '高蓉',
-                  type: 'bar',
-                  data: [ , 1300]
-                },{
-                  name: '杨松祥',
-                  type: 'bar',
-                  barCateGoryGap: '10%',
-                  data: [, 14000]
+                  type: 'line',
+                  data: [ 12, 30, 4, 5, 7]
                 }]
         };
 
@@ -124,43 +126,5 @@
         myChart.setOption(option);
     </script>
 
-    <div id="myfigure2" class="div-overview-c"></div>
-    <script type="text/javascript">
-       // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('myfigure2'));
-        var option = {
-            title: {
-                text: 'ECharts示例'
-            },
-            tooltip: {},
-            legend: {
-                data:['销量', 'HH']
-            },
-            xAxis: {
-                data: ["总资产","个体"]
-            },
-            yAxis: {},
-            series: [{
-                  name: '销量',
-                  type: 'bar',
-                  data: [ {{ mydic.mymoney }},]
-                },{
-                  name: 'HH',
-                  type: 'bar',
-                  data: [ 13,]
-                },{
-                  name: '销量',
-                  type: 'pie',
-                  data: [ ,29]
-                },{
-                  name: 'HH',
-                  type: 'pie',
-                  data: [ , 12]
-                }]
-        };
-
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
 
 {% endblock %}
