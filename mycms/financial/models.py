@@ -58,3 +58,25 @@ class Summary(models.Model):
         verbose_name = '财富一览'
         verbose_name_plural = '财富一览'
     pass
+
+#############################################################
+class DailyCost(models.Model):
+    ENVIRONMENT = (
+        (0, '其他'),
+        (1, '水费'),
+        (2, '电费'),
+        (3, '气费'),
+        (4, '通讯费'),
+        (5, '汽车费'),
+        (6, '教育费'),
+    )
+    cost_type = models.IntegerField(u'开支类型', choices=ENVIRONMENT, default=0)
+    price =  models.FloatField(default=0.0)
+    when = models.DateTimeField(blank=True, null=True, default=timezone.now)
+    description = models.CharField(max_length=128, blank=True, default='')
+    class Meta:
+        verbose_name = '日常开支'
+        verbose_name_plural = '日常开支'
+
+#    def __str__(self):
+#        return self.name

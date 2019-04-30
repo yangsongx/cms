@@ -2,6 +2,8 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from financial.models import Investment, MoneyDetails, Outcoming
 
+import json
+import re
 import sys
 
 # Create your views here.

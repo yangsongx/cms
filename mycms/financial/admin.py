@@ -1,5 +1,5 @@
 from django.contrib import admin
-from financial.models import Fund, Investment, Summary, MoneyDetails, Outcoming
+from financial.models import Fund, Investment, Summary, MoneyDetails, Outcoming, DailyCost
 from financial.views import summary_entry
 
 # Register your models here.
@@ -22,7 +22,11 @@ class SummaryAdmin(admin.ModelAdmin):
     def changelist_view(self, request, extra_content=None):
         return summary_entry(request)
 
+class DailyCostAdmin(admin.ModelAdmin):
+    list_display = ('id', 'cost_type', 'price', 'when', 'description')
+
 admin.site.register(Fund, FundAdmin)
 admin.site.register(Investment, InvestmentAdmin)
 admin.site.register(MoneyDetails, MoneyDetailsAdmin)
 admin.site.register(Outcoming , OutcomingAdmin)
+admin.site.register(DailyCost, DailyCostAdmin)
