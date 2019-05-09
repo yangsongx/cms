@@ -1,0 +1,28 @@
+stages:
+  - build
+  - test
+  - deploy
+
+start-building:
+  stage: build
+  script:
+    - echo 'will build the whole image for you'
+    - docker build -t ysx/$CI_PROJECT_NAME:D$CI_PIPELINE_ID .
+
+start-testing:
+  stage: test
+  script:
+    - echo 'put your test code here'
+
+deploy_cn_test:
+  stage: deploy
+  only:
+#                                            - master
+#                                              when: manual
+#                                                tags:
+#                                                    - deploy_cn_test
+#                                                      script:
+#                                                          - pwd
+#                                                              - templ=`cat swarm/template.yaml` && printf "PROJ=${CI_PROJECT_NAME}\nVERSION=D${CI_PIPELINE_ID}\nREG=${TEST_REGISTRY}\nRUN_ENV='cn-test'\ncat << EOF\n$templ\nEOF" | bash > swarm/swarm.yaml
+#                                                                  - /bin/bash swarm/deploy.sh cn
+#

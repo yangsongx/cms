@@ -1,0 +1,16 @@
+version: '3.5'
+
+services:
+  test:
+    image: ysx/temp:1.0
+    environment:
+      - RUN_ENV='just test'
+    networks:
+      - hsnetwork
+    ports:
+      - '9000:9000'
+
+networks:
+  hsnetwork:
+    external: true
+
