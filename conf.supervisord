@@ -1,0 +1,16 @@
+[program:nginx]
+command=/usr/sbin/nginx -g "daemon off;"
+stdout_events_enabled=true
+stderr_events_enabled=true
+autostart=true
+autorestart=true
+
+[program:mtest]
+command=/opt/mytest/start.sh
+user=root
+stdout_logfile=/dev/stdout
+stdout_logfile_maxbytes=0
+redirect_stderr=true
+environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8
+autostart=true
+autorestart=true

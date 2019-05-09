@@ -35,17 +35,16 @@ RUN pip3 install --trusted-host pypi.douban.com mysqlclient
 RUN pip3 install --trusted-host pypi.douban.com python3-memcached
 
 
-#COPY src/hotel-backend.nginx /etc/nginx/sites-available/hotel-backend
-#COPY src/hotel-backend.supervisor /etc/supervisor/conf.d/hotel-backend.conf
-#COPY src/start.sh /opt/hotelbackend/start.sh
+COPY conf.nginx /etc/nginx/sites-available/ftest
+COPY conf.supervisord /etc/supervisor/conf.d/ftest.conf
 
-#RUN cd /etc/nginx/sites-enabled \
-#    && ln -s /etc/nginx/sites-available/hotel-backend .
-#RUN unlink /etc/nginx/sites-enabled/default
+RUN cd /etc/nginx/sites-enabled \
+    && ln -s /etc/nginx/sites-available/ftest .
+RUN unlink /etc/nginx/sites-enabled/default
 
 # below try to solve the supervisor-Python2 and Django-Python3 issue...
 RUN sed -i "1 i\\#\!\/usr\/bin\/python2\.7" /usr/bin/supervisord
 RUN sed -i "1 i\\#\!\/usr\/bin\/python2\.7" /usr/bin/supervisorctl
 
-CMD ["/usr/bin/tail", "--retry", "-f", "/tmp/not.existed"]
-#CMD ["/usr/bin/supervisord", "-n"]
+#CMD ["/usr/bin/tail", "--retry", "-f", "/tmp/not.existed"]
+CMD ["/usr/bin/supervisord", "-n"]
