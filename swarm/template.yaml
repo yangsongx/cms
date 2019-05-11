@@ -8,7 +8,7 @@ services:
     networks:
       - hsnetwork
     ports:
-      - '9000:9000'
+      - '9090:9000'
 
 networks:
   hsnetwork:

@@ -1,5 +1,6 @@
 FROM ubuntu:18.04
 
+COPY ubuntu.18.04.sourcelist  /etc/apt/sources.list
 COPY mycms /opt/mytest
 
 RUN apt-get update
@@ -33,6 +34,7 @@ RUN pip3 install --trusted-host pypi.douban.com APScheduler==2.1.2
 RUN pip3 install --trusted-host pypi.douban.com schedule==0.5.0
 RUN pip3 install --trusted-host pypi.douban.com mysqlclient
 RUN pip3 install --trusted-host pypi.douban.com python3-memcached
+RUN pip3 install --trusted-host pypi.douban.com django-redis
 
 
 COPY conf.nginx /etc/nginx/sites-available/ftest
