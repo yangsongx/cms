@@ -23,8 +23,8 @@ import gaorong.views
 
 urlpatterns = [
     # I failed dispatch via URL in NGINX, so had to pre-pend the leading test/ URL
-    url(r'admin/', admin.site.urls), # each time ,run
-    url(r'^accounts/login/$', LoginView.as_view(template_name='admin/login.html'), name='login'),
+    url(r'mycms/admin/', admin.site.urls), # Use mycms
+    url(r'^mycms/accounts/login/$', LoginView.as_view(template_name='admin/login.html'), name='login'),
     url(r'^gg/', gaorong.views.gg_entry),
     url(r'^gg/uploadfile', gaorong.views.uploadfile_entry),
     url(r'^foo/', douban.views.foo),
